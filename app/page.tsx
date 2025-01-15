@@ -28,6 +28,8 @@
 
 "use client";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { SearchInput } from "@/components/SearchInput";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -53,13 +55,24 @@ export default function Home() {
   if (isLoading) return <p>Loading...</p>;
   if (!products) return <p>No products found</p>;
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 space-y-4">
       {products.length > 0 &&
         products.map((product: any) => (
           <div key={product.id}>
             <p>{product.title}</p>
           </div>
         ))}
+      <form role="search">
+        <SearchInput />
+      </form>
+      <Button>Default</Button>
+      <Button size="sm">Small</Button>
+      <Button size="icon">Icon</Button>
+      <Button variant="destructive">Destructive</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
     </main>
   );
 }
